@@ -10,6 +10,20 @@ $(function() {
         'slow');
 	});
 	
+	$(window).scroll(function() {
+		var scrollDistance = $(window).scrollTop();
+		$('.target').each(function() {
+			var id = $(this).attr("id").split("Row")[0];
+			var marking = 0 ;
+			if((id == "case_Counts" && $(window).width() < 991) || id != "case_Counts"){
+				if ($(this).position().top-200 <= scrollDistance) {
+					$('.nav a.selected').removeClass("selected");
+					$('#' + id).addClass('selected');
+				}
+			}
+		});
+	});
+	
 	$('#countryInput').on('change', function() {
 		var value = $(this).val();
 		var id = $('#countries [value="' + value + '"]').data('id');
