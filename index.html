@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Covid Attack 2020</title>
+		<link rel="icon" type="image/png" sizes="16x16" href="plugins/images/SmaLogo.png">
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<!-- Bootstrap Core CSS -->
+		<link href="css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		<link href="css/datatables/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- Menu CSS -->
+		<link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet"/>
+
+		<!-- Custom CSS -->
+		<link href="css/style.css" rel="stylesheet"/>
+		
+		<!-- Vector CSS -->
+		<link href="css/jquery-jvectormap-2.0.5.css" rel="stylesheet" />
+		
+		<!-- Morris CSS -->
+		<link href="css/morris.css" rel="stylesheet">
+		
+		<!-- color CSS -->
+		<link href="css/colors/megna-dark.css" id="theme" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/jquery/css/ui/1.9.2/themes/base/jquery-ui.css" />
+		
+	</head>
+
+	<body class="fix-header">
+		<!-- ============================================================== -->
+		<!-- Preloader -->
+		<!-- ============================================================== -->
+		<div class="preloader">
+			<svg class="circular" viewBox="25 25 50 50">
+				<circle class="path" cx="50" cy="50" r="20" fill="none"
+					stroke-width="2" stroke-miterlimit="10">
+				</circle>
+			</svg>
+		</div>
+		<!-- ============================================================== -->
+		<!-- Wrapper -->
+		<!-- ============================================================== -->
+		<div id="wrapper">
+			<!-- ============================================================== -->
+			<!-- Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+			
+			
+			<nav class="navbar navbar-default navbar-static-top m-b-0">
+				<div class="navbar-header">
+					<div class="col-sm-6 logo" style="display: inline-block; vertical-align: top">
+						<!-- <b> <img src="plugins/images/Logo.png" id ="logo"  alt="home" class="dark-logo"></b> -->
+						<img src="plugins/images/Logo.png" style = "float:left; height: 53px;" id="logo" alt="home" class="dark-logo hidden-xs hidden-sm">
+						<img src="plugins/images/Logo.png" style=" padding-top: 9px; float:left; height: 53px;" id="logo" alt="home" class="dark-logo  hidden-md hidden-lg">
+						<!-- <b class="servicelogo">Covid Attack 2020</b> -->
+					</div>
+					
+					<ul class="nav navbar-top-links navbar-right pull-right">
+						<li class="dropdown">
+							<a class="dropdown-toggle waves-effect waves-light" data-toggle="modal" data-target="#myModalAbout" href="#"> <i class="fa fa-cogs"></i></a>
+							<!-- <ul class="dropdown-menu dropdown-tasks " > --><!-- animated slideInUp -->
+								<!-- <li>
+									<a class="text-center" href="#" > <strong>About</strong></a>
+								</li> -->
+							<!-- </ul> -->
+						</li>				
+					</ul>
+				</div>
+			</nav>
+			
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav">
+					<ul class="nav" id="side-menu">
+						<li>
+							<a href="javascript:void(0)" id="dashboard">
+								<i class="fa fa-tachometer fa-fw"></i>
+								<span class="hide-menu">
+									<strong> Coronavirus Disease Dashboard</strong>
+									<span class="fa arrow"></span>
+								</span>
+							</a>
+						</li>
+						<li id="hide_case_Counts" class="hidden-lg hidden-md">
+							<a href="javascript:void(0)" id="case_Counts">
+								<i class="fa fa-plus-square fa-fw"></i>
+								<span class="hide-menu">
+									<strong>Case Counts</strong>
+									<span class="fa arrow"></span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" id="charts_and_graph">
+								<i class="fa fa-line-chart fa-fw"></i>
+								<span class="hide-menu">
+									<strong>Charts And Graphs</strong>
+									<span class="fa arrow"></span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" id="dataTable">
+								<i class="fa fa-table fa-fw"></i>
+								<span class="hide-menu">
+									<strong>Country Wise Data Table</strong>
+									<span class="fa arrow"></span>
+								</span>
+							</a >
+						</li> 
+					</ul>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Left Sidebar -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Page Content -->
+			<!-- ============================================================== -->
+			
+			<div id="page-wrapper">			
+				<div class="container-fluid">
+				<br>
+				<!-- <div class="row"> -->
+					<div class="row target" >
+						<div class="col-md-8" id="dashboardRow">
+							<div class="white-box">
+								<h2><b>Country visit</b></h2>
+								<div id="usa" style="height: 564px"></div>
+							</div>
+						</div>
+						<div class="col-md-4" id="case_CountsRow">
+							<div class="white-box">
+								<h2><b id="heading"></b></h2>
+								<hr>
+								<div class="row">
+									<div class="col-xs-3">
+										<div class="row" style= "text-align:center;" > 
+											<ul class="col-in">
+											<li>
+												<span class="circle circle-md bg-info"><i class="fa fa-medkit"></i></span>
+											</ul>
+										</div>
+										<div class="row" style= "text-align:center;" > 
+											<h4>Total</h4>
+										</div>
+									</div>
+									<div class="col-xs-9">
+										<h1 id = "totalcases" class="counter text-right m-t-15"></h3>
+									</div>
+								</div>
+								<div class="row">
+									<hr>
+									<div class="col-xs-3">
+										<div class="row" style= "text-align:center;" > 
+											<ul class="col-in">
+												<li>
+													<span class="circle circle-md bg-warning"><i class="fa fa-heartbeat"></i></span>
+												</li>
+											</ul>
+										</div>
+										<div class="row" style= "text-align:center;" >
+											<h4>Active</h4>
+										</div>
+									</div>
+									<div class="col-xs-9">
+										<h1 id = "active" class="counter text-right m-t-15"></h3>
+									</div>
+								 </div>
+								 <div class="row">
+									<hr>
+									<div class="col-xs-3">
+										<div class="row" style= "text-align:center;" > 
+											<ul class="col-in">
+												<li>
+													<span class="circle circle-md bg-danger"><i class="fa fa-bed"></i></span>
+												</li>
+											</ul>
+										</div>
+										<div class="row" style= "text-align:center;" >
+											<h4>Deaths</h4>
+										</div>
+									</div>
+									<div class="col-xs-9">
+										<h1 id = "deaths" class="counter text-right m-t-15"></h3>
+									</div>
+								 </div>
+								 <div class="row">
+									<hr>
+									<div class="col-xs-3">
+										<div class="row" style= "text-align:center;" > 
+											<ul class="col-in">
+												<li>
+													<span class="circle circle-md bg-success"><i class="fa fa-recycle"></i></span>
+												</li>
+											</ul>
+										</div>
+										<div class="row" style= "text-align:center;" >
+											<h4>Recovered</h4>
+										</div>
+									</div>
+									<div class="col-xs-9">
+										<h1 id = "recovered" class="counter text-right m-t-15"></h3>
+									</div>
+								 </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row target" id="charts_and_graphRow">
+						<div class="col-md-12">
+							<div class="white-box">
+								<div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+									<input class="form-control pull-right" name="browser" list="countries" id="countryInput">
+									  <datalist id="countries"></datalist>
+								</div>
+								<h3 class="box-title" id="DynamicAreaName"></h3>
+								<ul class="list-inline text-center m-t-40">
+									<li>
+										<h5><i class="fa fa-circle m-r-5" style="color: #2cabe3;"></i>Confirmed-<span id = "graphConfirmed"></span></h5> </li>
+									<li>
+										<h5><i class="fa fa-circle m-r-5" style="color: #ff7676;"></i>Deaths-<span id = "graphDeaths"></span></h5> </li>
+									<li>
+										<h5><i class="fa fa-circle m-r-5" style="color: #15cc04;"></i>Recovered-<span id = "graphRecovered"></span></h5> </li>
+								</ul>
+								<div id="extra-area-chart"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row target" id="dataTableRow">
+						<div class="col-md-12">
+							<div class="white-box">
+								<h2 class=" m-b-0"><b>Country Wise COVID-19 Cases<b></h2>
+								<hr>
+								<div class="table-responsive">
+									<table id="Country_Wise_Cases" class="table table-striped">
+										<thead>
+											<th>NAME</th>
+											<th>CONFIRMED</th>
+											<th>TODAY CONFIRMED</th>
+											<th>DEATHS</th>
+											<th>TODAY DEATHS</th>
+											<th>RECOVERED</th>
+										</thead>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				<!-- </div> -->
+				<!-- /.container-fluid -->
+				<footer class="footer" > 
+					<div class="col-xs-12 col-sm-12 col-md-4 text-center" id="left">© 2020, Covid Attack 2020 </div>
+					<div class="col-xs-12 col-sm-12 col-md-4"></div>
+					<div class="col-xs-12 col-sm-12 col-md-4 text-center" id="right">
+						<p>Powered By&nbsp;
+							<a href="">	
+								<img src="plugins/images/SmaLogo.png" style="height: 16px; width: 16px;" alt="Covid Attack" title="Covid Attack"/>Covid Attack 2020
+							</a>
+						</p>
+					</div>
+				</footer>
+					
+					
+				<div id="myModalAbout" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalAboutLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalAboutLabel">Last Updated Time</h4> </div>
+							<div class="modal-body">
+								<h4 id = "lastupdated"></h4>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				
+				<div id="modal_alert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalDiscoveryStatusLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="modal_alert_label"><!--Dynamic Text Here--></h4> </div>
+							<div class="modal-body" id="modalDiscoveryStatusBody">
+								<p id ="modal_data"><!--Dynamic Text Here--></p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+					
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- ============================================================== -->
+		<!-- End Page Content -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		
+		<script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="js/jquery/js/ui/1.9.2/jquery-ui.js"></script> 
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap/dist/js/bootstrap.min.js"></script>
+		
+		<!-- Menu Plugin JavaScript -->
+		<script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+		
+		<!--slimscroll JavaScript -->
+		<script src="js/jquery.slimscroll.js"></script>
+		
+		<!-- Custom Theme JavaScript -->
+		<script src="js/custom.min.js"></script>
+		
+		<!-- data table -->
+		<script src="plugins/bower_components/datatables/jquery.dataTables.min.js"></script>	
+		<script src="js/datatables/buttons/1.2.2/js/buttons.print.min.js"></script>
+		<script src="js/datatables/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+		<script src="js/cloudflare/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+		<script src="js/rawgit/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+		<script src="js/datatables/buttons/1.2.2/js/buttons.flash.min.js"></script>
+		<script src="js/datatables/buttons/1.2.2/js/buttons.html5.min.js"></script>
+		
+		<!-- Vector map JavaScript -->
+		<script src="plugins/bower_components/vectormap/jquery-jvectormap-2.0.5.min.js"></script>
+		<script src="plugins/bower_components/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+		
+		<!--Morris JavaScript -->
+		<script src="plugins/bower_components/raphael/raphael-min.js"></script>
+		<script src="plugins/bower_components/morris/morris.js"></script>
+		
+		<script src="js/portaljs/dsa_api_sdk.js"></script>
+		<script src="js/portaljs/bind.js"></script>
+		<script src="js/portaljs/logic.js"></script>
+		<script src="js/portaljs/global-vars.js"></script>
+		<script src="js/portaljs/morris-data.js"></script>
+		<script src="js/portaljs/vectorMap.js"></script>
+		
+		
+	</body>
+</html>
