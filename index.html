@@ -217,8 +217,7 @@
 						<div class="col-md-12">
 							<div class="white-box">
 								<div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-									<input class="form-control pull-right" name="browser" list="countries" id="countryInput">
-									  <datalist id="countries"></datalist>
+									<input class="form-control pull-right" name="browser" list="countries" id="countryInput" onmouseover="current = this.value; this.value = '';" onmouseout="this.value = current">									  <datalist id="countries"></datalist>
 								</div>
 								<h3 class="box-title" id="DynamicAreaName"></h3>
 								<ul class="list-inline text-center m-t-40">
